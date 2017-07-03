@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sm_YesOrNo.c      	                                :+:      :+:    :+:   */
+/*   sm_nbr_M015.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smonnier <s.monnier44440@gmail.com>        +#+  +:+       +#+        */
 /*   	   <https://github.com/SimonMonnier>      +#+#+#+#+#+   +#+           */
@@ -10,21 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "sm_putstr.h"
-#include "reply_tmp.h"
+#include "sm_YesOrNo.h"
+#include "sm_reboot_struct.h"
 
-void				sm_YesOrNo(t_reply_tmp *reply_tmp)
+void				sm_nbr_M015(t_reply_tmp *reply_tmp)
 {
-	while (reply_tmp->reply < 1 || reply_tmp->reply > 2)
-	{
-		scanf("%s", &reply_tmp->yesORno[0]);
-		reply_tmp->reply = atoi(reply_tmp->yesORno);
-		getchar();
-		if (reply_tmp->reply < 1 || reply_tmp->reply > 2)
-		{
-			sm_putstr(" /!\\ Tapez 1(oui) ou 2(non) /!\\\n");
-		}
-	}
+	sm_putstr("--> Y'a-t-il plusieurs M015 ?\n");
+	sm_putstr(" /!\\ Tapez 1(oui) ou 2(non) /!\\\n");
+	sm_reboot_struct(reply_tmp);
+	sm_YesOrNo(reply_tmp);
 }

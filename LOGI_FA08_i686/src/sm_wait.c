@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sm_YesOrNo.c      	                                :+:      :+:    :+:   */
+/*   sm_wait.c                              	        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smonnier <s.monnier44440@gmail.com>        +#+  +:+       +#+        */
 /*   	   <https://github.com/SimonMonnier>      +#+#+#+#+#+   +#+           */
@@ -10,21 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
-#include "sm_putstr.h"
 #include "reply_tmp.h"
 
-void				sm_YesOrNo(t_reply_tmp *reply_tmp)
+void				sm_wait(t_reply_tmp *reply_tmp)
+
 {
-	while (reply_tmp->reply < 1 || reply_tmp->reply > 2)
-	{
-		scanf("%s", &reply_tmp->yesORno[0]);
-		reply_tmp->reply = atoi(reply_tmp->yesORno);
-		getchar();
-		if (reply_tmp->reply < 1 || reply_tmp->reply > 2)
-		{
-			sm_putstr(" /!\\ Tapez 1(oui) ou 2(non) /!\\\n");
-		}
-	}
+	reply_tmp->buf = NULL;
+	reply_tmp->rtrn_read = read(0, reply_tmp->buf, 1);
+	while ((reply_tmp->rtrn_read = getchar()) != '\n' && reply_tmp->rtrn_read != EOF)
+		{}
 }

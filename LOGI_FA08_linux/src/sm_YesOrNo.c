@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
-#include "sm_atoi.h"
 #include "sm_putstr.h"
 #include "reply_tmp.h"
 
@@ -20,7 +20,7 @@ void				sm_YesOrNo(t_reply_tmp *reply_tmp)
 	while (reply_tmp->reply < 1 || reply_tmp->reply > 2)
 	{
 		scanf("%s", &reply_tmp->yesORno[0]);
-		reply_tmp->reply = sm_atoi(reply_tmp);
+		reply_tmp->reply = atoi(reply_tmp->yesORno);
 		getchar();
 		if (reply_tmp->reply < 1 || reply_tmp->reply > 2)
 		{
