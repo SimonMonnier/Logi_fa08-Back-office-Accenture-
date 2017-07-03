@@ -15,7 +15,8 @@
 
 typedef struct	s_reply_tmp
 {
-	char	tmp;
+	void	*buf;
+	int	rtrn_read;
 	char	yesORno[255], Date_start[255], Date_invoicing[255];
 	int	reply_date_invoicing, sup_order;
 	int	reply, i_tmp, Relay, cycle_NC, reply_date_start;

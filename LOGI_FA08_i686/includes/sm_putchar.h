@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sm_wait.c                              	        :+:      :+:    :+:   */
+/*   sm_putchar.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smonnier <s.monnier44440@gmail.com>        +#+  +:+       +#+        */
 /*   	   <https://github.com/SimonMonnier>      +#+#+#+#+#+   +#+           */
@@ -10,15 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include "reply_tmp.h"
+#ifndef SM_PUTCHAR_H
+#define SM_PUTCHAR_H
 
-void				sm_wait(t_reply_tmp *reply_tmp)
+void				sm_putchar(char c);
 
-{
-	reply_tmp->buf = NULL;
-	reply_tmp->rtrn_read = read(0, reply_tmp->buf, 1);
-	while ((reply_tmp->rtrn_read = getchar()) != '\n' && reply_tmp->rtrn_read != EOF)
-		{}
-}
+#endif

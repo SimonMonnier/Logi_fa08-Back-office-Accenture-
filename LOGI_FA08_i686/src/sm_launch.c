@@ -29,8 +29,8 @@ int				sm_launch(t_reply_tmp *reply_tmp)
 	sm_putstr("/*  Created: 2017/07/01 by smonnier                ###   ########.fr      */\n");
 	sm_putstr("/*                                                                        */\n");
 	sm_putstr("/**************************************************************************/\n\n");
-	sm_putstr("      Logigramme pour traitement Back-office de cas 'PAGE FA08'.\n\n");
-	sm_putstr("                 /!\\ (Tapez ENTREE pour continuer) /!\\\n\n");
+	sm_putstr("      Logigramme pour traitement Back-office de cas 'PAGE' edf 'FA08'.\n\n");
+	sm_putstr("                    /!\\ (Tapez ENTREE pour continuer) /!\\\n\n");
 	sm_wait(reply_tmp);	
 	sm_putstr("--> Lancer EMMACL (ISU)\n");
 	sm_wait(reply_tmp);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sm_wait.c                              	        :+:      :+:    :+:   */
+/*   sm_wait.h                              	        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smonnier <s.monnier44440@gmail.com>        +#+  +:+       +#+        */
 /*   	   <https://github.com/SimonMonnier>      +#+#+#+#+#+   +#+           */
@@ -10,15 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#ifndef SM_WAIT_H
+#define SM_WAIT_H
+
 #include "reply_tmp.h"
 
-void				sm_wait(t_reply_tmp *reply_tmp)
+void				sm_wait(t_reply_tmp *reply_tmp);
 
-{
-	reply_tmp->buf = NULL;
-	reply_tmp->rtrn_read = read(0, reply_tmp->buf, 1);
-	while ((reply_tmp->rtrn_read = getchar()) != '\n' && reply_tmp->rtrn_read != EOF)
-		{}
-}
+#endif

@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdio.h>
 #include "reply_tmp.h"
 
 void				sm_wait(t_reply_tmp *reply_tmp)
 
 {
-	int			i;
-
-	scanf("%c", &reply_tmp->tmp);
-	while ((i = getchar()) != '\n' && i != EOF)
+	reply_tmp->buf = NULL;
+	reply_tmp->rtrn_read = read(0, reply_tmp->buf, 1);
+	while ((reply_tmp->rtrn_read = getchar()) != '\n' && reply_tmp->rtrn_read != EOF)
 		{}
 }
