@@ -18,7 +18,7 @@ void				sm_wait(t_reply_tmp *reply_tmp)
 {
 	int			i;
 
-	scanf("%c", &reply_tmp->tmp[0]);
+	scanf("%c", &reply_tmp->tmp);
 	while ((i = getchar()) != '\n' && i != EOF)
 		{}
 }
