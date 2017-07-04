@@ -82,10 +82,10 @@ void				sm_monthly(t_reply_tmp *reply_tmp)
 		else
 			sm_putstr(" /!\\ ERREUR 'Le nombre d'echeance doit etre < 11 & >= 1' /!\\\n");
 	}
-	monthly_tmp = monthly * 12;
+	monthly_tmp = monthly * 11;
 	monthly_tmp += redress;
 	monthly_tmp2 = monthly_tmp - (monthly * monthly_payment);
-	monthly_result = monthly_tmp2 / (12 - monthly_payment);
+	monthly_result = monthly_tmp2 / (11 - monthly_payment);
 	printf("\n--> Echeances re-calculees = '%.2f' Euro/Mois\n", monthly_result);
 	sm_wait(reply_tmp);
 }

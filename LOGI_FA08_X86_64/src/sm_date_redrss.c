@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "sm_wait.h"
 #include "sm_putstr.h"
 #include "sm_putchar.h"
@@ -21,77 +19,12 @@
 
 int				sm_date_redrss(t_reply_tmp *reply_tmp)
 {
-	int			rturn;
-	int			tmp;
-
-	sm_putstr("--> La date de debut de redressement est-elle posterieure\n");
+	sm_putstr("--> La date de debut de redressement est-elle posterieure (apres)\n");
 	sm_putstr("    a la date de fin de la derniere facture recue par le client ?\n");   
-	reply_tmp->reply_date_start = 0;	
-	rturn = 2;
-	while ((reply_tmp->reply_date_start < 140101 || reply_tmp->reply_date_start > 181231) && rturn == 2)
-	{
-		sm_putstr("--> ENTREZ LA DATE DE DEBUT DE REDRESSEMENT(ex: AAMMJJ '170622'):\n");
-		scanf("%s", &reply_tmp->Date_start[0]);
-		reply_tmp->reply_date_start = atoi(reply_tmp->Date_start);
-		getchar();
-		if (reply_tmp->reply_date_start > 140101 || reply_tmp->reply_date_start < 181231)
-			{
-				sm_putstr("\n - Vous avez entre ");
-				sm_putchar(reply_tmp->Date_start[4]);
-				sm_putchar(reply_tmp->Date_start[5]);
-				sm_putchar('/');
-				sm_putchar(reply_tmp->Date_start[2]);
-				sm_putchar(reply_tmp->Date_start[3]);
-				sm_putchar('/');
-				sm_putstr("20");
-				sm_putchar(reply_tmp->Date_start[0]);
-				sm_putchar(reply_tmp->Date_start[1]);
-				sm_putstr(" comme debut de redressement, est-ce correct ?\n");
-				sm_putstr(" /!\\ Tapez 1 (oui) ou Tapez 2 (non) /!\\\n");
-				sm_reboot_struct(reply_tmp);	
-				sm_YesOrNo(reply_tmp);
-				if (reply_tmp->reply == 1)
-					rturn = 1;
-				tmp = reply_tmp->reply_date_start;
-				reply_tmp->reply_date_start = 0;
-			}
-		if (tmp < 140101 || tmp > 181231)
-			sm_putstr(" /!\\ ERREUR DE DATE ! (ex: AAMMJJ '170622'): \n");
-	}
-	tmp = 0;
-	rturn = 2;
-	reply_tmp->reply_date_invoicing = 0;
-	while ((reply_tmp->reply_date_invoicing < 140101 || reply_tmp->reply_date_invoicing > 181231) && rturn == 2)
-	{
-		sm_putstr("--> ENTREZ LA DATE DE FIN DE LA DERNIERE FACTURE(ex: AAMMJJ '170622'):\n");
-		scanf("%s", &reply_tmp->Date_invoicing[0]);
-		reply_tmp->reply_date_invoicing = atoi(reply_tmp->Date_start);
-		getchar();
-		if (reply_tmp->reply_date_invoicing > 140101 || reply_tmp->reply_date_invoicing < 181231)
-			{
-				sm_putstr("\n - Vous avez entre ");
-				sm_putchar(reply_tmp->Date_invoicing[4]);
-				sm_putchar(reply_tmp->Date_invoicing[5]);
-				sm_putchar('/');
-				sm_putchar(reply_tmp->Date_invoicing[2]);
-				sm_putchar(reply_tmp->Date_invoicing[3]);
-				sm_putchar('/');
-				sm_putstr("20");
-				sm_putchar(reply_tmp->Date_invoicing[0]);
-				sm_putchar(reply_tmp->Date_invoicing[1]);
-				sm_putstr(" comme fin de derniere facture, est-ce correct ?\n");
-				sm_putstr(" /!\\ Tapez 1 (oui) ou Tapez 2 (non) /!\\\n");
-				sm_reboot_struct(reply_tmp);	
-				sm_YesOrNo(reply_tmp);
-				if (reply_tmp->reply == 1)
-					rturn = 1;
-				tmp = reply_tmp->reply_date_invoicing;
-				reply_tmp->reply_date_invoicing = 0;
-			}
-		if (tmp < 140101 || tmp > 181231)
-			sm_putstr(" /!\\ ERREUR DE DATE ! (ex: MMJJAA '170622'): \n");
-	}
-	if (reply_tmp->reply_date_invoicing - reply_tmp->reply_date_start < 0)
+	sm_putstr(" /!\\ Tapez 1 (oui) ou Tapez 2 (non) /!\\\n");
+	sm_reboot_struct(reply_tmp);	
+	sm_YesOrNo(reply_tmp);
+	if (reply_tmp->reply == 1)
 	{
 		sm_putstr("--> Nous sommes donc sur un cycle en cours\n");
 		sm_wait(reply_tmp);
